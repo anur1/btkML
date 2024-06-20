@@ -11,21 +11,26 @@ x=10
 y=20,30
 z=[2,23]
 
-#kütüphaneler
+#1. kütüphaneler
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#veri yükleme
-veriler = pd.read_csv('eksikveriler.csv')
+
+#2.  veri ön işleme 
+
+#2.1  veri yükleme
+veriler = pd.read_csv('eksikveriler.csv') # her farklı uygulamada dosya değiştirilir
 print(veriler)
 
+#2.2 veri içeriğine bakma 
 boy = veriler [['boy']]
 print(boy)
 
 kilo = veriler [['kilo']]
 print (kilo)
 
+#2.3 class ve obje ekleme 
 class makina: 
     uzunluk = 110
     km_litre = 10
@@ -38,7 +43,7 @@ print(Skoda_tramway.dizel_calisma(10))
 
 
 
-#eksik veriler
+#3. eksik veriler
 from sklearn.impute import SimpleImputer
 
 imputer = SimpleImputer(missing_values=np.nan, strategy= 'mean')
@@ -52,29 +57,29 @@ print(yas)
 
 
 
-#kategorik veriler tr->1
-
+#4. kategorik verileri 100 haline getirme tr->1
 ulke = veriler.iloc[:, 0:1].values
 print(ulke)
 
 
 from sklearn import preprocessing
 
+# veriye 1-2-3 vs. vermek için
 le = preprocessing.LabelEncoder()
 
 ulke[:, 0] =le.fit_transform(veriler.iloc[:, 0])
-
 print(ulke)  
 
-#kategorik veriler tr_us_fr->100
+#4.1 kategorik verileri tr_us_fr->100 şeklinde encode yapmak için
 ohe = preprocessing.OneHotEncoder()
-ulke = ohe.fit_transform(ulke).toarray()
 
+ulke = ohe.fit_transform(ulke).toarray()
 print(ulke)
 
 
 
-#verilerin birleştirilmesi (sayısal + kategorik)
+#5. verilerin birleştirilmesi (sayısal + kategorik)
+#5.1 farklı tipteki numpy dizilerini ayrı ayrı dataframe'lere dönüştürme
 sonuc = pd.DataFrame(data=ulke, index=range(22), columns = ['fr'
 , 'tr', 'us'])
 print(sonuc)
@@ -84,10 +89,10 @@ print(sonuc2)
 
 
 cinsiyet = veriler.iloc[:, -1].values
-sonuc3 = pd.DataFrame(data=cinsiyet, index= range(22), columns = ['cinsiyet']
-)
+sonuc3 = pd.DataFrame(data=cinsiyet, index= range(22), columns = ['cinsiyet'])
 print(sonuc3)
 
+#5.2 Farklı tiplerdeki dataframe'leri birleştirme
 s = pd.concat([sonuc, sonuc2], axis=1)
 print(s)
 
@@ -98,8 +103,7 @@ print(s2)
 
 
 
-#verilerin eğitim+test kümesine bölünmesi
-
+#6. verilerin eğitim+test kümesine bölünmesi
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(s, sonuc3, test_size = 0.33, random_state=0) 
@@ -107,7 +111,7 @@ x_train, x_test, y_train, y_test = train_test_split(s, sonuc3, test_size = 0.33,
 
 
 
-# sayısal verilerin ölçeklenmesi
+#7. sayısal verilerin ölçeklenmesi (standartlaştırılması)
 from sklearn.preprocessing import StandardScaler
 
 sc = StandardScaler()
