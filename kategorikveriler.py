@@ -147,7 +147,7 @@ print(X_test)
 
 
 
-
+#bilkav.com/makine-ogrenmesi-egitimi/
 
 
 
