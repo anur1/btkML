@@ -11,10 +11,13 @@ x=10
 y=20,30
 z=[2,23]
 
+
 #1. kütüphaneler
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+
 
 
 #2.  veri ön işleme 
@@ -43,6 +46,10 @@ print(Skoda_tramway.dizel_calisma(10))
 
 
 
+
+
+
+
 #3. eksik veriler
 from sklearn.impute import SimpleImputer
 
@@ -54,6 +61,9 @@ print(yas)
 imputer = imputer.fit(yas[:,1:4])
 yas[:,1:4] = imputer.transform(yas[:, 1:4])
 print(yas)
+
+
+
 
 
 
@@ -75,6 +85,9 @@ ohe = preprocessing.OneHotEncoder()
 
 ulke = ohe.fit_transform(ulke).toarray()
 print(ulke)
+
+
+
 
 
 
@@ -103,10 +116,20 @@ print(s2)
 
 
 
+
+
+
 #6. verilerin eğitim+test kümesine bölünmesi
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(s, sonuc3, test_size = 0.33, random_state=0) 
+print(x_train)
+print(y_train)
+print(x_test)
+print(y_test)
+
+
+
 
 
 
@@ -118,6 +141,8 @@ sc = StandardScaler()
 
 X_train = sc.fit_transform(x_train)
 X_test = sc.fit_transform(x_test) 
+print(X_train)
+print(X_test)
 
 
 
