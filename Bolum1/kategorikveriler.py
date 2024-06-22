@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 #2.  veri ön işleme 
 
 #2.1  veri yükleme
-veriler = pd.read_csv('eksikveriler.csv') # her farklı uygulamada dosya değiştirilir
+veriler = pd.read_csv('2_eksikveriler.csv') # her farklı uygulamada dosya değiştirilir
 print(veriler)
 
 #2.2 veri içeriğine bakma 
