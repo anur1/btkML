@@ -49,6 +49,7 @@ lr=LinearRegression()
 
 lr.fit(X_train, Y_train)
 
+lr.predict(X_test)
 
 
 
