@@ -49,14 +49,29 @@ lr=LinearRegression()
 
 lr.fit(X_train, Y_train)
 
-lr.predict(X_test)
+tahmin = lr.predict(X_test)
 
 
+#non-standard tahmin
+
+lr.fit(x_train, y_train)
+
+tahmin2 = lr.predict(x_test)
 
 
+#veri görselleştirme
 
+#sıralama
+x_train = x_train.sort_index()
+y_train = y_train.sort_index()
 
+#çizdirme
+plt.plot(x_train, y_train)
+plt.plot(x_test, lr.predict(x_test))
 
-
+#etiketleme
+plt.title("aylara göre satış")
+plt.xlabel("aylar")
+plt.ylabel("satışlar")
 
 
